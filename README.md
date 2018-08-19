@@ -13,3 +13,4 @@
   - x: acceleration in the x direction
   - y: in the y direction 
   - z: and the z direction
+- Individual repetitions are separated by rows containing all zeros
