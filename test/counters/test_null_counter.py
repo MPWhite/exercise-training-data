@@ -28,6 +28,7 @@ def test_null_counter():
 
         # Initialize the counter object by creating a feeder object
         data_feeder = CsvFileDataFeeder(fixture_file.name)
-        counter = NullCounter(data_feeder)
+        data_stream = data_feeder.get_data_stream()
+        counter = NullCounter(data_stream)
 
         assert counter.count() == 3
