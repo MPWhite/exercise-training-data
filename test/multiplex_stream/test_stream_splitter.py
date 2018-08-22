@@ -3,7 +3,7 @@ from tempfile import NamedTemporaryFile
 from multiplex_stream.stream_splitter import StreamSplitter
 from counters.null_counter import NullCounter
 from counters.interval_counter import IntervalCounter
-from data_feeder.csv_file_data_feeder import CsvFileDataFeeder
+from data_feeder.csv_file_data_feeder import CsvFileDataFeeder, TimestepCsvFileDataFeeder
 
 
 def test_multiplex_stream():
@@ -29,7 +29,7 @@ def test_multiplex_stream():
         fixture_file.flush()
 
         # Initialize the counter object by creating a feeder object
-        data_feeder = CsvFileDataFeeder(fixture_file.name)
+        data_feeder = TimestepCsvFileDataFeeder(fixture_file.name)
         counter_classes = [IntervalCounter, NullCounter, NullCounter]
 
         stream_splitter = StreamSplitter(data_feeder, counter_classes)
