@@ -35,6 +35,8 @@ class StreamSplitter:
         # Split data stream
         stream = self.data_feeder.get_data_stream()
         data_streams = tee(stream, len(self.counter_classes))
+        # Remove references to original stream to make it impossible to manipulate (Fucks up the other streams)
+        del stream
 
         # Set up arg list
         arg_list = [(data_streams[i], self.counter_classes[i]) for i in range(len(self.counter_classes))]
